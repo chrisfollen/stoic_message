@@ -1,8 +1,7 @@
 
-
 //create function to generate a random number between (0) and (numIn - 1)
 randNum = numIn => {
-    return Math.floor(Math.random*numIn);
+    return Math.floor(Math.random()*numIn);
 };
 
 
@@ -24,17 +23,30 @@ let wisdom = [];
 //iterate through message types, calling random number function to select one of each message type
 //store messages to be used in 'wisdom' array
 
-
-
-console.log(stoic.quotes[2]);
-
-
-
-
-
-
-
+for(let prop in stoic){
+   let rando = randNum(stoic[prop].length);
+   
+   switch(prop){
+       case 'quotes':
+           wisdom.push(`Your Stoic quote is: \n ${stoic.quotes[rando]}`);
+           break;
+        case 'virtues':
+            wisdom.push(`Your Stoic virtue is: \n ${stoic.virtues[rando]}`);
+            break;
+        case 'practices':
+            wisdom.push(`Your Stoic practice is: \n ${stoic.practices[rando]}`);
+            break;
+        default:
+            'Error';
+   };
+   
+};
 
 //join messages as string + display final string
+const finalWisdom = wisdom.join('\n');
+console.log(finalWisdom);
+
+
+
 
 
